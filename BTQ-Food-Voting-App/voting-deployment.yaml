@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: voting-deployment
+  labels:
+    name: voting-deployment 
+    app: BTQ-voting-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      name: voting-app-pod
+      app: BTQ-voting-app
+  template:
+    metadata:
+      name: voting-app-pod
+      labels:
+        name: voting-app-pod
+        app: BTQ-voting-app
+    spec:
+      containers:
+       - name: voting-app
+         image: Mufaddal789/example-voting-app_vote:v1
+         ports:
+          - containerPort: 80
+
